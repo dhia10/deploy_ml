@@ -1,0 +1,39 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+env/
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+.ipynb_checkpoints/
+
+# Node
+node_modules/
+deploy_rlt/dist/
+
+# Environment
+.env
+.env.local
+.env.production
+
+# Models / Data (Optional: keeping pkl for now as requested/implied)
+# last_pipeline.pkl
+
+# OS
+.DS_Store
+Thumbs.db
