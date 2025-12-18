@@ -1,5 +1,6 @@
 import { useEffect, useMemo, useState, FormEvent, ChangeEvent } from 'react'
 import axios, { AxiosError } from 'axios'
+import { API_BASE_URL } from '../config'
 
 interface ModelBenchmark {
   model: string
@@ -198,8 +199,8 @@ export default function UploadTrain({ onTrainSuccess }: Props) {
                   <th key={key}>
                     {key === 'model' ? 'Modèle' :
                       key.startsWith('test_') ? key.replace('test_', 'Test ').replace('_', ' ') :
-                      key.startsWith('cv_') ? key.replace('cv_', 'CV ').replace('_', ' ') :
-                      key.replace('_', ' ')
+                        key.startsWith('cv_') ? key.replace('cv_', 'CV ').replace('_', ' ') :
+                          key.replace('_', ' ')
                     }
                   </th>
                 ))}
@@ -236,7 +237,7 @@ export default function UploadTrain({ onTrainSuccess }: Props) {
     const modelName = encodeURIComponent(selectedMutingModel)
     const metric = selectedMutingMetric ? encodeURIComponent(selectedMutingMetric) : ''
 
-    return `/dso2/muting-plot.png?model_name=${modelName}&metric=${metric}`
+    return `${API_BASE_URL}/dso2/muting-plot.png?model_name=${modelName}&metric=${metric}`
   }, [result, selectedMutingModel, selectedMutingMetric])
 
   const loadMutingTable = async () => {
@@ -343,7 +344,7 @@ export default function UploadTrain({ onTrainSuccess }: Props) {
               <small>Le système détecte automatiquement le type de problème si non spécifié</small>
             </div>
 
-           
+
             {/* SUBMIT BUTTON */}
             <button type="submit" className="btn-primary" disabled={loading}>
               {loading ? (
@@ -533,7 +534,7 @@ export default function UploadTrain({ onTrainSuccess }: Props) {
                   <p className="no-data">⚠️ Muting activé mais aucune courbe n'est disponible.</p>
                 )}
 
-                
+
 
                 {result.dso2.muting?.available && (
                   <>

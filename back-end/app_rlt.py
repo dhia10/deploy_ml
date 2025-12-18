@@ -51,7 +51,13 @@ XAI_READY: bool = False
 XAI_EXPLAINER: Optional[RLTXAIExplainer] = None
 
 if os.path.exists(MODEL_PATH):
-    pipeline = RLTBenchmarkPipeline.load(MODEL_PATH)
+    try:
+        pipeline = RLTBenchmarkPipeline.load(MODEL_PATH)
+        print(f"📦 Modèle chargé avec succès depuis {MODEL_PATH}")
+    except Exception as e:
+        print(f"⚠️ Erreur lors du chargement de {MODEL_PATH}: {e}")
+        print("💡 Démarrage avec un pipeline vide.")
+        pipeline = None
 
 
 # =========================

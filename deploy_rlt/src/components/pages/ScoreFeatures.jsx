@@ -1,10 +1,11 @@
 import { useState } from "react";
+import { API_BASE_URL } from "../../config";
 
 export default function ScoreFeatures() {
   const [error, setError] = useState(false);
   const [reloadKey, setReloadKey] = useState(0);
 
-  const imageUrl = `http://127.0.0.1:8000/eda/top.png?n=20&reload=${reloadKey}`;
+  const imageUrl = `${API_BASE_URL}/eda/top.png?n=20&reload=${reloadKey}`;
 
   return (
     <div style={{ padding: "20px" }}>
@@ -21,7 +22,7 @@ export default function ScoreFeatures() {
           cursor: "pointer"
         }}
       >
-       
+
       </button>
 
       {error && (

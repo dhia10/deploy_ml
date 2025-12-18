@@ -1,5 +1,6 @@
 import { useEffect, useMemo, useState } from "react";
 import axios from "axios";
+import { API_BASE_URL } from "../../config";
 
 export default function XaiPage() {
   const [status, setStatus] = useState(null);
@@ -27,20 +28,20 @@ export default function XaiPage() {
   }, []);
 
   const heatmapSrc = useMemo(
-    () => `/xai/rlt-heatmap.png?t=${refreshKey}`,
+    () => `${API_BASE_URL}/xai/rlt-heatmap.png?t=${refreshKey}`,
     [refreshKey]
   );
 
   const shapSrc = useMemo(
     () =>
-      `/xai/shap-explanation.png?instance_idx=${encodeURIComponent(
+      `${API_BASE_URL}/xai/shap-explanation.png?instance_idx=${encodeURIComponent(
         instanceIdx
       )}&plot_type=${encodeURIComponent(plotType)}&t=${refreshKey}`,
     [instanceIdx, plotType, refreshKey]
   );
 
   const comparisonSrc = useMemo(
-    () => `/xai/comparison.png?t=${refreshKey}`,
+    () => `${API_BASE_URL}/xai/comparison.png?t=${refreshKey}`,
     [refreshKey]
   );
 
@@ -67,7 +68,7 @@ export default function XaiPage() {
       <div className="card">
         <h2>Contrôles SHAP</h2>
         <h2>       </h2>
-        
+
 
         <div style={{ display: "flex", gap: 12, flexWrap: "wrap" }}>
           <label>
