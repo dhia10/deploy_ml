@@ -1,0 +1,10 @@
+services:
+  - type: web
+    name: rlt-backend
+    env: python
+    rootDir: back-end
+    buildCommand: pip install -r requirements.txt
+    startCommand: python app_rlt.py
+    envVars:
+      - key: PYTHON_VERSION
+        value: 3.11.9
