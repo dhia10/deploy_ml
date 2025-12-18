@@ -1,4 +1,5 @@
 services:
+  # Backend FastAPI
   - type: web
     name: rlt-backend
     env: python
@@ -8,3 +9,15 @@ services:
     envVars:
       - key: PYTHON_VERSION
         value: 3.11.9
+
+  # Frontend React (Vite)
+  - type: static
+    name: rlt-dashboard
+    env: static
+    rootDir: deploy_rlt
+    buildCommand: npm install && npm run build
+    publishDir: dist
+    routes:
+      # Fix for React Router: redirect all paths to index.html
+      - source: /*
+        destination: /index.html
