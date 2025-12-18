@@ -6,6 +6,8 @@ import App from './App.jsx'
 
 import { API_BASE_URL } from './config'
 
+console.log("🚀 Connecting to Backend at:", API_BASE_URL);
+
 // Backend API URL configuration (Render support)
 axios.defaults.baseURL = API_BASE_URL;
 
